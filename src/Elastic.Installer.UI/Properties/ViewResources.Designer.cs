@@ -415,7 +415,7 @@ namespace Elastic.Installer.UI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TODO.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string ConfigurationView_UnicastExplanationLabel {
             get {
@@ -631,15 +631,6 @@ namespace Elastic.Installer.UI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Place logs, data, and config in the same directory.
-        /// </summary>
-        public static string LocationsView_CustomLocationsCheckBox {
-            get {
-                return ResourceManager.GetString("LocationsView_CustomLocationsCheckBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Use a custom installation directory.
         /// </summary>
         public static string LocationsView_CustomLocationsRadioButton {
@@ -676,9 +667,18 @@ namespace Elastic.Installer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Place logs, data, and config in the same directory.
+        /// </summary>
+        public static string LocationsView_ElasticsearchCustomLocationsCheckBox {
+            get {
+                return ResourceManager.GetString("LocationsView_ElasticsearchCustomLocationsCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Elasticsearch has several different folders that it needs to have read and/or write access to:
         ///
-        ///[b]Home[b/]: The directory where the Elasticsearch binaries, plugins, and scripts are intalled to.
+        ///[b]Home[/b]: The directory where the Elasticsearch binaries, plugins, and scripts are intalled to.
         ///
         ///[b]Data[/b]: The directory where Elasticsearch stores your data.
         ///
@@ -709,6 +709,15 @@ namespace Elastic.Installer.UI.Properties {
         public static string LocationsView_InstallDirectoryBrowseButton {
             get {
                 return ResourceManager.GetString("LocationsView_InstallDirectoryBrowseButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Place logs in the same directory.
+        /// </summary>
+        public static string LocationsView_KibanaCustomLocationsCheckBox {
+            get {
+                return ResourceManager.GetString("LocationsView_KibanaCustomLocationsCheckBox", resourceCulture);
             }
         }
         
