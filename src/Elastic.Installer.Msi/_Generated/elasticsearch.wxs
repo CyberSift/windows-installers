@@ -586,6 +586,7 @@
 
     <Binary Id="ValidateArgumentsAction_File" SourceFile="%this%.CA.dll" />
 
+    <Property Id="ElasticProduct" Value="elasticsearch" />
     <Property Id="CurrentVersion" Value="5.1.1" />
     <Property Id="MsiLogging" Value="voicewarmup" />
     <Property Id="ARPNOREPAIR" Value="yes" />

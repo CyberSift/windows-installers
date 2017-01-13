@@ -167,7 +167,7 @@ Target "Integrate" (fun () ->
   ==> "UnzipProducts"
   ==> "PatchGuids"
   ==> "PruneFiles"
-  ==> "UnitTest"
+//  ==> "UnitTest"
   ==> "BuildServices"
   ==> "BuildInstallers"
   ==> "Integrate"
