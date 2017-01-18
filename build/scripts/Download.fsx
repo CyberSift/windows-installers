@@ -36,6 +36,14 @@ module Downloader =
             |> Path.GetFullPath
             |> fun f -> Path.Combine(f, sprintf "%s-%s.zip" this.Name version)
     
+        member this.ExtractedDirectory version = 
+            buildInFolder
+            |> Directory.CreateDirectory
+            |> ignore
+            buildInFolder
+            |> Path.GetFullPath
+            |> fun f -> Path.Combine(f, sprintf "%s-%s" this.Name version)
+
     let unzipProduct (product : Product) version = 
         tracefn "Unzipping %s %s" product.Name version 
         Unzip buildInFolder (product.ZipFile version)
