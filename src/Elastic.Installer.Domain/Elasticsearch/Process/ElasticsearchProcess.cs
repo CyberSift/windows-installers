@@ -11,10 +11,9 @@ using Elastic.Installer.Domain.Process.ObservableWrapper;
 
 namespace Elastic.Installer.Domain.Process
 {
-	public class ElasticsearchNode : IDisposable
+	public class ElasticsearchProcess : IDisposable
 	{
 		private ObservableProcess _process;
-		private IDisposable _processListener;
 
 		public string JavaExe { get; private set; }
 		public string ElasticsearchJar { get; private set; }
@@ -28,9 +27,9 @@ namespace Elastic.Installer.Domain.Process
 		public bool NoColor { get; private set; }
 		private readonly Subject<ManualResetEvent> _blockingSubject = new Subject<ManualResetEvent>();
 
-		public ElasticsearchNode() : this(null) { }
+		public ElasticsearchProcess() : this(null) { }
 
-		public ElasticsearchNode(IEnumerable<string> args)
+		public ElasticsearchProcess(IEnumerable<string> args)
 		{
 			this.AdditionalArguments = ParseArgs(args);
 
@@ -54,7 +53,6 @@ namespace Elastic.Installer.Domain.Process
 				throw new Exception("JAVA_HOME is not set!");
 			this.JavaExe = Path.Combine(javaHome, @"bin\java.exe");
 		}
-
 
 		public void Start()
 		{
@@ -140,7 +138,6 @@ namespace Elastic.Installer.Domain.Process
 		public void Stop()
 		{
 			this._process?.Dispose();
-			this._processListener?.Dispose();
 			this._disposables?.Dispose();
 			this._disposables = new CompositeDisposable();
 		}
