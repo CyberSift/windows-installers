@@ -20,7 +20,7 @@ namespace Elastic.Installer.Msi.Kibana.CustomActions.Install
 		public override Return Return => Return.check;
 		public override Sequence Sequence => Sequence.InstallExecuteSequence;
 		public override When When => When.After;
-		public override Step Step => new Step(nameof(KibanaConfigurationAction));
+		public override Step Step => new Step(nameof(KibanaEnvironmentAction));
 		public override Execute Execute => Execute.deferred;
 
 		[CustomAction]

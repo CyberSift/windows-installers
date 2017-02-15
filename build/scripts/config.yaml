@@ -25,6 +25,8 @@ elasticsearch:
       guid: d83a7f89-812f-4c05-9849-82a894696fed
     - version: 5.2.0
       guid: a9e3e9ac-b253-4adf-bb49-76671cf16738
+    - version: 5.2.1
+      guid: cf98d19a-c574-45b9-8a3c-fdd969800650
 kibana:
   upgrade_code: 6a2e6f51-5145-4c1a-8d05-2190ae213367
   known_versions:
@@ -40,3 +42,5 @@ kibana:
       guid: 03667a3a-5a75-4f20-8182-95c224ea39da
     - version: 5.2.0
       guid: 553e1f72-d328-4cc6-bc89-3a52b356f29d
+    - version: 5.2.1
+      guid: f145ddd7-546d-43b7-b2c0-a97e1a6051ae

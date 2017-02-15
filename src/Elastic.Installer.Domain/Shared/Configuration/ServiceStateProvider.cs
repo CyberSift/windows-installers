@@ -76,16 +76,15 @@ namespace Elastic.Installer.Domain.Shared.Configuration
 				service.Start();
 				service.Refresh();
 
-				var timeout = TimeSpan.FromSeconds(60);
 				var sleepyTime = 250;
-				var ticksPerSleep = (int)Math.Floor(totalTicks / (timeout.TotalMilliseconds / sleepyTime));
+				var ticksPerSleep = (int)Math.Floor(totalTicks / (timeToWait.TotalMilliseconds / sleepyTime));
 				var tickCount = 0;
 				var utcNow = DateTime.UtcNow;
 
 				while (service.Status != ServiceControllerStatus.Running)
 				{
-					if (DateTime.UtcNow - utcNow > timeout)
-						throw new System.ServiceProcess.TimeoutException("Time out has expired and the operation has not been completed.");
+					if (DateTime.UtcNow - utcNow > timeToWait)
+						throw new System.ServiceProcess.TimeoutException($"Timeout has expired and the operation has not been completed in {timeToWait}.");
 
 					Thread.Sleep(sleepyTime);
 					service.Refresh();

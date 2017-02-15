@@ -54,5 +54,5 @@ IF /I "%1"=="release" (
   )
 )
 
-
+ECHO build.bat: target=%TARGET% version=%VERSION% testtargets=%TESTTARGETS% release=%RELEASE%
 "packages\build\FAKE\tools\Fake.exe" "build\\scripts\\Targets.fsx" "target=%TARGET%" "version=%VERSION%" "testtargets=%TESTTARGETS%" "release=%RELEASE%"

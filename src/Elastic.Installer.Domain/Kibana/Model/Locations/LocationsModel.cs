@@ -181,6 +181,8 @@ namespace Elastic.Installer.Domain.Kibana.Model.Locations
 			set { this.RaiseAndSetIfChanged(ref logsDirectory, value); }
 		}
 
+		public string LogsFile => Path.Combine(LogsDirectory, "kibana.log");
+
 		public override string ToString()
 		{
 			var sb = new StringBuilder();

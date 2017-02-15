@@ -19,9 +19,9 @@ using Elastic.Installer.Domain.Kibana.Model.Connecting;
 using Elastic.Installer.Domain.Kibana.Model.Plugins;
 using Elastic.Installer.Domain.Kibana.Model.Notice;
 using Elastic.Installer.Domain.Kibana.Configuration.EnvironmentBased;
-using Elastic.Installer.Domain.Service.Kibana;
 using System.ServiceProcess;
 using System.IO;
+using Elastic.Installer.Domain.Kibana.Service;
 
 namespace Elastic.Installer.Domain.Kibana.Model
 {

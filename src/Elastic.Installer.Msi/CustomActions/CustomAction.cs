@@ -12,7 +12,7 @@ namespace Elastic.Installer.Msi.CustomActions
 	{
 		protected IEnumerable<string> AllArguments { get; }
 
-		public CustomAction(IEnumerable<string> allArguments)
+		protected CustomAction(IEnumerable<string> allArguments)
 		{
 			this.AllArguments = allArguments;
 		}
