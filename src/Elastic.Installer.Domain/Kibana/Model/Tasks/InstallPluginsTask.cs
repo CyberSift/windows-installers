@@ -32,7 +32,8 @@ namespace Elastic.Installer.Domain.Kibana.Model.Tasks
 			foreach (var plugin in plugins)
 			{
 				this.Session.SendProgress(20, $"installing {plugin}");
-				provider.Install(installDirectory, configDirectory, plugin, this.Session, 1930);
+				var configArgument = $" --config {Path.Combine(configDirectory, "kibana.yml")}";
+				provider.Install(installDirectory, configDirectory, plugin + configArgument, this.Session, 1930);
 				this.Session.SendProgress(50, $"installed {plugin}");
 			}
 			return true;

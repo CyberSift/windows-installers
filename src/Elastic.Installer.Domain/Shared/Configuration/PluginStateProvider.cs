@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Abstractions;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -18,11 +19,22 @@ namespace Elastic.Installer.Domain.Shared.Configuration
 
 	public class PluginStateProvider : IPluginStateProvider
 	{
-		public static PluginStateProvider Default { get; } = new PluginStateProvider();
+		private readonly string _product;
+		private readonly IFileSystem _fileSystem;
+
+		public static PluginStateProvider ElasticsearchDefault => new PluginStateProvider("elasticsearch", new FileSystem());
+		public static PluginStateProvider KibanaDefault => new PluginStateProvider("kibana", new FileSystem());
+
 		private static readonly Regex DownloadProgress = new Regex(@"\s*(?<percent>\d+)\%\s*");
 		private static readonly char[] SplitListing = { '\r', '\n' };
 
-		private static string PluginScript(string installDirectory) => Path.Combine(installDirectory, "bin", "elasticsearch-plugin.bat");
+		private string PluginScript(string installDirectory) => Path.Combine(installDirectory, "bin", $"{_product}-plugin.bat");
+
+		public PluginStateProvider(string product, IFileSystem fileSystem)
+		{
+			_product = product;
+			_fileSystem = fileSystem;
+		}
 
 		public IList<string> InstalledPlugins(string installDirectory, string configDirectory)
 		{
@@ -61,7 +73,7 @@ namespace Elastic.Installer.Domain.Shared.Configuration
 			var installingTicks = pluginTicks - (perDownloadIncrement * 100);
 
 			var command = $"install {plugin}";
-			var pluginScript = PluginScript(installDirectory);
+			var pluginScript = this.PluginScript(installDirectory);
 			var process = this.PluginProcess(configDirectory, pluginScript, command);
 
 			DataReceivedEventHandler processOnOutputDataReceived = (sender, args) =>
@@ -90,7 +102,7 @@ namespace Elastic.Installer.Domain.Shared.Configuration
 		public void Remove(string installDirectory, string configDirectory, string plugin, ISession session, int pluginTicks)
 		{
 			var command = $"remove {plugin}";
-			var pluginScript = PluginScript(installDirectory);
+			var pluginScript = this.PluginScript(installDirectory);
 			var process = this.PluginProcess(configDirectory, pluginScript, command);
 
 			DataReceivedEventHandler processOnOutputDataReceived = (sender, args) =>
@@ -138,7 +150,6 @@ namespace Elastic.Installer.Domain.Shared.Configuration
 
 		private System.Diagnostics.Process PluginProcess(string configDirectory, string pluginScript, string command)
 		{
-
 			var start = new ProcessStartInfo
 			{
 				FileName = pluginScript,
