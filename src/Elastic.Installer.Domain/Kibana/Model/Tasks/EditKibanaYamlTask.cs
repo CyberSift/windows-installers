@@ -40,6 +40,15 @@ namespace Elastic.Installer.Domain.Kibana.Model.Tasks
 			settings.ElasticsearchCert = connecting.ElasticsearchCert;
 			settings.ElasticsearchCA = connecting.ElasticsearchCA;
 			yaml.Save();
+
+			// log file needs to exist for plugin installation
+			if (locations.LogsFile != "stdout" && !this.FileSystem.File.Exists(locations.LogsFile))
+			{
+				var fileInfo = this.FileSystem.FileInfo.FromFileName(locations.LogsFile);
+				fileInfo.Directory.Create();
+				using (this.FileSystem.File.Create(locations.LogsFile)) { }
+			}
+
 			this.Session.SendProgress(1000, "kibana.yml updated");
 			return true;
 		}

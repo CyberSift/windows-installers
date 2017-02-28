@@ -40,6 +40,25 @@
 
             </Directory>
 
+            <Directory Id="INSTALLDIR.config" Name="config">
+
+              <Component Id="Component.elasticsearch.yml" Guid="daaa2cba-a1ed-4f29-afbf-547839fb66cf" Win64="yes">
+                <RemoveFile Id="elasticsearch.yml" Name="elasticsearch.yml" On="both" />
+                <File Id="elasticsearch.yml" Source="..\..\build\in\elasticsearch-5.2.1\config\elasticsearch.yml" />
+              </Component>
+
+              <Component Id="Component.jvm.options" Guid="daaa2cba-a1ed-4f29-afbf-547881624924" Win64="yes">
+                <RemoveFile Id="jvm.options" Name="jvm.options" On="both" />
+                <File Id="jvm.options" Source="..\..\build\in\elasticsearch-5.2.1\config\jvm.options" />
+              </Component>
+
+              <Component Id="Component.log4j2.properties" Guid="daaa2cba-a1ed-4f29-afbf-5478d3b0653b" Win64="yes">
+                <RemoveFile Id="log4j2.properties" Name="log4j2.properties" On="both" />
+                <File Id="log4j2.properties" Source="..\..\build\in\elasticsearch-5.2.1\config\log4j2.properties" />
+              </Component>
+
+            </Directory>
+
             <Directory Id="INSTALLDIR.lib" Name="lib">
 
               <Component Id="Component.elasticsearch_5.2.1.jar" Guid="daaa2cba-a1ed-4f29-afbf-54786ad344c4" Win64="yes">
@@ -205,25 +224,6 @@
               <Component Id="Component.t_digest_3.0.jar" Guid="daaa2cba-a1ed-4f29-afbf-547811092469" Win64="yes">
                 <RemoveFile Id="t_digest_3.0.jar" Name="t_digest_3.0.jar" On="both" />
                 <File Id="t_digest_3.0.jar" Source="..\..\build\in\elasticsearch-5.2.1\lib\t-digest-3.0.jar" />
-              </Component>
-
-            </Directory>
-
-            <Directory Id="INSTALLDIR.config" Name="config">
-
-              <Component Id="Component.elasticsearch.yml" Guid="daaa2cba-a1ed-4f29-afbf-547839fb66cf" Win64="yes">
-                <RemoveFile Id="elasticsearch.yml" Name="elasticsearch.yml" On="both" />
-                <File Id="elasticsearch.yml" Source="..\..\build\in\elasticsearch-5.2.1\config\elasticsearch.yml" />
-              </Component>
-
-              <Component Id="Component.jvm.options" Guid="daaa2cba-a1ed-4f29-afbf-547881624924" Win64="yes">
-                <RemoveFile Id="jvm.options" Name="jvm.options" On="both" />
-                <File Id="jvm.options" Source="..\..\build\in\elasticsearch-5.2.1\config\jvm.options" />
-              </Component>
-
-              <Component Id="Component.log4j2.properties" Guid="daaa2cba-a1ed-4f29-afbf-5478d3b0653b" Win64="yes">
-                <RemoveFile Id="log4j2.properties" Name="log4j2.properties" On="both" />
-                <File Id="log4j2.properties" Source="..\..\build\in\elasticsearch-5.2.1\config\log4j2.properties" />
               </Component>
 
             </Directory>
@@ -614,6 +614,9 @@
       <ComponentRef Id="Component.README.textile" />
       <ComponentRef Id="Component.elasticsearch_plugin.bat" />
       <ComponentRef Id="Component.elasticsearch.exe" />
+      <ComponentRef Id="Component.elasticsearch.yml" />
+      <ComponentRef Id="Component.jvm.options" />
+      <ComponentRef Id="Component.log4j2.properties" />
       <ComponentRef Id="Component.elasticsearch_5.2.1.jar" />
       <ComponentRef Id="Component.HdrHistogram_2.1.6.jar" />
       <ComponentRef Id="Component.hppc_0.7.1.jar" />
@@ -647,9 +650,6 @@
       <ComponentRef Id="Component.snakeyaml_1.15.jar" />
       <ComponentRef Id="Component.spatial4j_0.6.jar" />
       <ComponentRef Id="Component.t_digest_3.0.jar" />
-      <ComponentRef Id="Component.elasticsearch.yml" />
-      <ComponentRef Id="Component.jvm.options" />
-      <ComponentRef Id="Component.log4j2.properties" />
       <ComponentRef Id="Component.aggs_matrix_stats_5.2.1.jar" />
       <ComponentRef Id="Component.plugin_descriptor.properties" />
       <ComponentRef Id="Component.ingest_common_5.2.1.jar" />

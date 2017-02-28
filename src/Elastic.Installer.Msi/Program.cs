@@ -23,7 +23,7 @@ namespace Elastic.Installer.Msi
 			var productName = args[0].ToLower();
 			var product = GetProduct(productName);
 			var version = args[1];
-			var distributionRoot = Path.Combine(args[2], $"{productName}-{version}"); ;
+			var distributionRoot = Path.Combine(args[2], $"{productName}-{version}");
 
 			// set properties in the MSI so that they don't have to be set on the command line.
 			// The only awkward one is plugins as it has a not empty default value, but an empty
@@ -111,7 +111,7 @@ namespace Elastic.Installer.Msi
 										{
 											new DirFiles(distributionRoot + @"\*.*")
 										},
-										Dirs = product.Files(distributionRoot).ToArray()
+										Dirs = product.Files(distributionRoot).ToArray(),
 									}
 								}
 							}

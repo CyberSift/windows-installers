@@ -87,12 +87,8 @@ namespace Elastic.Installer.Domain.Kibana.Process
 				var logDirectory = fileInfo.DirectoryName;
 				var seekTo = fileInfo.Exists ? fileInfo.Length : 0;
 
-				// directory needs to exist for file system watcher to start
-				if (!Directory.Exists(logDirectory))
-					Directory.CreateDirectory(logDirectory);
-
-				//When a log file is specified, Kibana does not write to stdout.
-				// Watch the log file for the started notification
+				// When a log file is specified, Kibana does not write to stdout so
+				// watch the log file for the started notification
 				_fileSystemWatcher = new RxFileSystemWatcher(c =>
 				{
 					c.Path = logDirectory;
@@ -113,7 +109,7 @@ namespace Elastic.Installer.Domain.Kibana.Process
 							string line;
 
 							while ((line = reader.ReadLine()) != null)
-								HandleMessage(new KibanaMessage(line));
+								HandleMessage(ConsoleOut.Out(line));
 
 							Interlocked.CompareExchange(ref seekTo, reader.BaseStream.Position, seekTo);
 						}

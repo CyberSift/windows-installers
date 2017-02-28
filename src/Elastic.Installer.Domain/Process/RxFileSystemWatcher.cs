@@ -44,11 +44,6 @@ namespace Elastic.Installer.Domain.Process
 		public IObservable<ErrorEventArgs> Errors { get; private set; }
 		public IObservable<FileSystemEventArgs> Created { get; private set; }
 
-		/// <summary>
-		///     Pass an existing FileSystemWatcher instance, this is just for the case where it's not possible to only pass the
-		///     configuration, be aware that disposing this wrapper will dispose the FileSystemWatcher instance too.
-		/// </summary>
-		/// <param name="watcher"></param>
 		public RxFileSystemWatcher(FileSystemWatcher watcher)
 		{
 			Watcher = watcher;
@@ -74,10 +69,6 @@ namespace Elastic.Installer.Domain.Process
 				.Select(x => x.EventArgs);
 		}
 
-		/// <summary>
-		///     Pass a function to configure the FileSystemWatcher as desired, this constructor will manage creating and applying
-		///     the configuration.
-		/// </summary>
 		public RxFileSystemWatcher(Action<FileSystemWatcher> configure)
 			: this(new FileSystemWatcher())
 		{

@@ -26,7 +26,7 @@ namespace Elastic.Installer.Domain.Kibana.Model.Tasks
 			if (!this.InstallationModel.ServiceModel.StartAfterInstall)
 				return true;
 			var seesService = this.ServiceStateProvider.SeesService;
-			this.Session.Log($"Trying to execute StartServiceTask seeing service: " + seesService);
+			this.Session.Log($"Trying to execute StartServiceTask seeing service: {seesService}");
 			if (!seesService) return true;
 			var totalTicks = 1000;
 			this.Session.SendActionStart(totalTicks, ActionName, "Starting Kibana service");
