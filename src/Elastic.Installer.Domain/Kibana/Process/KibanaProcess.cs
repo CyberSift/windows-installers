@@ -84,24 +84,14 @@ namespace Elastic.Installer.Domain.Kibana.Process
 			if (this.LogFile != "stdout")
 			{
 				var fileInfo = new FileInfo(LogFile);
-				var logDirectory = fileInfo.DirectoryName;
 				var seekTo = fileInfo.Exists ? fileInfo.Length : 0;
-
-				// When a log file is specified, Kibana does not write to stdout so
-				// watch the log file for the started notification
-				_fileSystemWatcher = new RxFileSystemWatcher(c =>
-				{
-					c.Path = logDirectory;
-					c.Filter = fileInfo.Name;
-					c.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size | NotifyFilters.LastAccess;
-				});
-
-				this.Disposables.Add(_fileSystemWatcher);
-
-				_fileSystemWatcher.Changed
-					.TakeWhile(c => !this.Started)
+				var disposable = Observable.Interval(TimeSpan.FromSeconds(3))
+					.TakeWhile(_ => !this.Started)
 					.Subscribe(f =>
 					{
+						fileInfo.Refresh();
+						if (!fileInfo.Exists || fileInfo.Length == seekTo) return;
+		
 						using (var fileStream = new FileStream(LogFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
 						using (var reader = new StreamReader(fileStream))
 						{
@@ -115,7 +105,7 @@ namespace Elastic.Installer.Domain.Kibana.Process
 						}
 					});
 
-				_fileSystemWatcher.Start();
+				this.Disposables.Add(disposable);
 			}
 
 			base.Start();

@@ -2,8 +2,6 @@
 using System.Linq;
 using WixSharp;
 using System;
-using Elastic.Installer.Domain.Elasticsearch.Model;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Elastic.Installer.Msi.CustomActions
@@ -61,7 +59,7 @@ namespace Elastic.Installer.Msi.CustomActions
 	public abstract class CustomAction<TProduct> : CustomAction
 		where TProduct : Product, new()
 	{
-		public CustomAction() : base(new TProduct().AllArguments) { }
+		protected CustomAction() : base(new TProduct().AllArguments) { }
 
 		public override Type ProductType => typeof(TProduct);
 	}

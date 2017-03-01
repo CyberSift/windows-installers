@@ -1,14 +1,10 @@
 ﻿using Elastic.Installer.Msi.CustomActions;
 using Elastic.Installer.Domain.Session;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Deployment.WindowsInstaller;
 using WixSharp;
 using Elastic.Installer.Domain.Kibana.Model.Tasks;
 using Elastic.Installer.Domain.Kibana.Model;
+using Elastic.Installer.Msi.Kibana.CustomActions.Install;
 
 namespace Elastic.Installer.Msi.Kibana.CustomActions.Uninstall
 {
@@ -16,10 +12,10 @@ namespace Elastic.Installer.Msi.Kibana.CustomActions.Uninstall
 	{
 		public override string Name => nameof(KibanaUninstallPluginsAction);
 		public override int Order => (int)KibanaCustomActionOrder.UninstallPlugins;
-		public override Step Step => Step.RemoveFiles;
-		public override When When => When.Before;
+		public override Step Step => new Step(nameof(KibanaServiceStopAction));
+		public override When When => When.After;
 
-		public override Condition Condition => new Condition("UPGRADINGPRODUCTCODE AND (REMOVE=\"ALL\")");
+		public override Condition Condition => new Condition("(NOT UPGRADINGPRODUCTCODE) AND (REMOVE=\"ALL\")");
 
 		[CustomAction]
 		public static ActionResult KibanaUninstallPlugins(Session session) =>

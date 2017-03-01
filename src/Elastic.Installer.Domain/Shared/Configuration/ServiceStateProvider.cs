@@ -4,7 +4,6 @@ using System.ServiceProcess;
 using System.Threading;
 using Elastic.Installer.Domain.Service;
 using Elastic.Installer.Domain.Session;
-using Elastic.Installer.Domain.Service.Elasticsearch;
 
 namespace Elastic.Installer.Domain.Shared.Configuration
 {

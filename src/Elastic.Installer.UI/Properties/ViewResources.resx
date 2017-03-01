@@ -417,7 +417,7 @@ X-Pack is a proprietary plugin that falls under the Elastic EULA.</value>
   <data name="LocationsView_Elasticsearch_Help" xml:space="preserve">
     <value>Elasticsearch has several different folders that it needs to have read and/or write access to:
 
-[b]Home[/b]: The directory where the Elasticsearch binaries, plugins, and scripts are intalled to.
+[b]Home[/b]: The directory where the Elasticsearch binaries, plugins, and scripts are installed to.
 
 [b]Data[/b]: The directory where Elasticsearch stores your data.
 
@@ -678,7 +678,7 @@ Alternatively, you may choose to not install Elasticsearch as a service and run 
   <data name="LocationsView_Kibana_Help" xml:space="preserve">
     <value>Kibana has several different folders that it needs to have read and/or write access to:
 
-[b]Home[/b]: The directory where the Kibana binaries, plugins, and scripts are intalled to.
+[b]Home[/b]: The directory where the Kibana binaries, plugins, and scripts are installed to.
 
 [b]Logs[/b]: The directory where Kibana will write its log files to.
 </value>

@@ -25,7 +25,6 @@ namespace Elastic.Installer.Domain.Process
 
 		protected virtual List<string> GetArguments() => this.AdditionalArguments;
 
-
 		public string ProcessExe { get; protected set; }
 
 		public bool Started { get; protected set; }
@@ -35,7 +34,6 @@ namespace Elastic.Installer.Domain.Process
 		public string ConfigDirectory { get; protected set; }
 
 		public List<string> AdditionalArguments { get; protected set; }
-
 
 		protected ProcessBase(IEnumerable<string> args)
 		{

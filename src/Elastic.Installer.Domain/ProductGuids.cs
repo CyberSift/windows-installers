@@ -22,7 +22,8 @@ namespace Elastic.Installer.Domain
 			{ "5.1.1", new Guid("82292245-25f0-41c1-88ee-0892b733a7e3") },
 			{ "5.1.2", new Guid("d83a7f89-812f-4c05-9849-82a894696fed") },
 			{ "5.2.0", new Guid("a9e3e9ac-b253-4adf-bb49-76671cf16738") },
-			{ "5.2.1", new Guid("cf98d19a-c574-45b9-8a3c-fdd969800650") }
+			{ "5.2.1", new Guid("cf98d19a-c574-45b9-8a3c-fdd969800650") },
+			{ "5.2.2", new Guid("94b95c91-501c-4a70-a08e-2387477455dc") }
 		};
 
 		public static Dictionary<string, Guid> KibanaProductCodes => new Dictionary<string, Guid>
@@ -33,7 +34,8 @@ namespace Elastic.Installer.Domain
 			{ "5.1.1", new Guid("059d0ca3-6448-4da3-97b6-83662aa754dc") },
 			{ "5.1.2", new Guid("03667a3a-5a75-4f20-8182-95c224ea39da") },
 			{ "5.2.0", new Guid("553e1f72-d328-4cc6-bc89-3a52b356f29d") },
-			{ "5.2.1", new Guid("f145ddd7-546d-43b7-b2c0-a97e1a6051ae") }
+			{ "5.2.1", new Guid("f145ddd7-546d-43b7-b2c0-a97e1a6051ae") },
+			{ "5.2.2", new Guid("b38526e1-bbd1-43a8-8bf0-b0aedd5faa12") }
 		};
 
 	}
