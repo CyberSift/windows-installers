@@ -61,11 +61,29 @@ namespace Elastic.Installer.UI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Elasticsearch in the browser.
+        /// </summary>
+        public static string ClosingView_ElasticsearchRunningAtHeader {
+            get {
+                return ResourceManager.GetString("ClosingView_ElasticsearchRunningAtHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Find a client for your favorite language.
         /// </summary>
         public static string ClosingView_FindYourClient {
             get {
                 return ResourceManager.GetString("ClosingView_FindYourClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Kibana in the browser.
+        /// </summary>
+        public static string ClosingView_KibanaRunningAtHeader {
+            get {
+                return ResourceManager.GetString("ClosingView_KibanaRunningAtHeader", resourceCulture);
             }
         }
         
@@ -142,7 +160,7 @@ namespace Elastic.Installer.UI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open the Elasticsearch documentation after exiting.
+        ///   Looks up a localized string similar to Open the Elastic Stack documentation after exiting.
         /// </summary>
         public static string ClosingView_ReadTheDocsOnCloseCheckBox {
             get {
@@ -156,15 +174,6 @@ namespace Elastic.Installer.UI.Properties {
         public static string ClosingView_ReadTheReference {
             get {
                 return ResourceManager.GetString("ClosingView_ReadTheReference", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Open Elasticsearch in the browser.
-        /// </summary>
-        public static string ClosingView_RunningAtHeader {
-            get {
-                return ResourceManager.GetString("ClosingView_RunningAtHeader", resourceCulture);
             }
         }
         

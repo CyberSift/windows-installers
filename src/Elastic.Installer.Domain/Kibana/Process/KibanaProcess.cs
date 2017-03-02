@@ -12,8 +12,6 @@ namespace Elastic.Installer.Domain.Kibana.Process
 {
 	public class KibanaProcess : ProcessBase
 	{
-		private RxFileSystemWatcher _fileSystemWatcher;
-
 		public string JsPath { get; set; }
 
 		public string ConfigFile { get; set; }
@@ -119,10 +117,8 @@ namespace Elastic.Installer.Domain.Kibana.Process
 			string host; int? port;
 		    if (message.TryGetStartedConfirmation(out host, out port))
 		    {
-				this._fileSystemWatcher?.Stop();
 			    this.Host = host;
 			    this.Port = port;
-
 				this.BlockingSubject.OnNext(this.StartedHandle);
 				this.Started = true;
 				this.StartedHandle.Set();

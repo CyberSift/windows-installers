@@ -1,12 +1,7 @@
 ﻿using Elastic.Installer.Domain.Session;
 using Elastic.Installer.Domain.Shared.Configuration.EnvironmentBased;
 using Elastic.Installer.Domain.Shared.Model.Tasks;
-using System;
-using System.Collections.Generic;
 using System.IO.Abstractions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Elastic.Installer.Domain.Kibana.Model.Tasks
 {

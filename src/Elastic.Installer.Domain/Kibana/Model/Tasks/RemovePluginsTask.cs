@@ -17,9 +17,7 @@ namespace Elastic.Installer.Domain.Kibana.Model.Tasks
 		{
 			var installDirectory = this.InstallationModel.KibanaEnvironmentState.HomeDirectory;
 			var configDirectory = this.InstallationModel.KibanaEnvironmentState.ConfigDirectory;
-			var configFile = Path.Combine(configDirectory, "kibana.yml");
 			var provider = this.InstallationModel.PluginsModel.PluginStateProvider;
-
 			var plugins = provider.InstalledPlugins(installDirectory, configDirectory);
 
 			if (plugins.Count == 0)
@@ -28,10 +26,10 @@ namespace Elastic.Installer.Domain.Kibana.Model.Tasks
 				return true;
 			}
 
+			var configFile = Path.Combine(configDirectory, "kibana.yml");
 			var ticksPerPlugin = new[] { 20, 1930, 50 };
 			var totalTicks = plugins.Count * ticksPerPlugin.Sum();
 			
-
 			this.Session.SendActionStart(totalTicks, ActionName, "Removing existing Kibana plugins", "Kibana plugin: [1]");
 			foreach (var plugin in plugins)
 			{

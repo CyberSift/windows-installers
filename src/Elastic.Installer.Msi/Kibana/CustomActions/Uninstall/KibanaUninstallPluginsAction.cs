@@ -4,7 +4,6 @@ using Microsoft.Deployment.WindowsInstaller;
 using WixSharp;
 using Elastic.Installer.Domain.Kibana.Model.Tasks;
 using Elastic.Installer.Domain.Kibana.Model;
-using Elastic.Installer.Msi.Kibana.CustomActions.Install;
 
 namespace Elastic.Installer.Msi.Kibana.CustomActions.Uninstall
 {
@@ -12,7 +11,8 @@ namespace Elastic.Installer.Msi.Kibana.CustomActions.Uninstall
 	{
 		public override string Name => nameof(KibanaUninstallPluginsAction);
 		public override int Order => (int)KibanaCustomActionOrder.UninstallPlugins;
-		public override Step Step => new Step(nameof(KibanaServiceStopAction));
+
+		public override Step Step => Step.InstallInitialize;
 		public override When When => When.After;
 
 		public override Condition Condition => new Condition("(NOT UPGRADINGPRODUCTCODE) AND (REMOVE=\"ALL\")");

@@ -14,9 +14,12 @@ namespace Elastic.Installer.Msi.Kibana.CustomActions.Install
 		public override Condition Condition => Condition.Always;
 		public override Return Return => Return.check;
 		public override Sequence Sequence => Sequence.InstallExecuteSequence;
-		public override When When => When.After;
-		public override Step Step => Step.InstallInitialize;
-		public override Execute Execute => Execute.deferred;
+
+		// Stop the service before the "FilesInUse" dialog can be shown
+		// in InstallValidate
+		public override When When => When.Before;
+		public override Step Step => Step.InstallValidate;
+		public override Execute Execute => Execute.immediate;
 
 		[CustomAction]
 		public static ActionResult KibanaServiceStop(Session session) =>

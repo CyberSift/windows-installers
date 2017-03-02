@@ -1,10 +1,5 @@
 ﻿using Elastic.Installer.Domain.Session;
 using Elastic.Installer.Msi.CustomActions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Deployment.WindowsInstaller;
 using WixSharp;
 using Elastic.Installer.Domain.Kibana.Model.Tasks;

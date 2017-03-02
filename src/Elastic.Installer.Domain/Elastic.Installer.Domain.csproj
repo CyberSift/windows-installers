@@ -118,7 +118,6 @@
     <Compile Include="Kibana\Service\KibanaServiceConfiguration.cs" />
     <Compile Include="Model\InstallationModelBase.cs" />
     <Compile Include="Process\ProcessBase.cs" />
-    <Compile Include="Process\RxFileSystemWatcher.cs" />
     <Compile Include="Service\Service.cs">
       <SubType>Component</SubType>
     </Compile>

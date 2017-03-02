@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Text.RegularExpressions;
 using Elastic.Installer.Domain.Process;
 using Newtonsoft.Json;

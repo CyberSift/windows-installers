@@ -24,11 +24,13 @@ namespace Elastic.Installer.Domain.Kibana.Configuration.EnvironmentBased
 
 		public string HomeDirectory =>
 			Environment.GetEnvironmentVariable(KibanaEnvironmentVariables.KIBANA_HOME_ENV_VAR, EnvironmentVariableTarget.Machine)
-			?? Environment.GetEnvironmentVariable(KibanaEnvironmentVariables.KIBANA_HOME_ENV_VAR, EnvironmentVariableTarget.User);
+			?? Environment.GetEnvironmentVariable(KibanaEnvironmentVariables.KIBANA_HOME_ENV_VAR, EnvironmentVariableTarget.User)
+			?? Environment.GetEnvironmentVariable(KibanaEnvironmentVariables.KIBANA_HOME_ENV_VAR, EnvironmentVariableTarget.Process);
 
 		public string ConfigDirectory =>
 			Environment.GetEnvironmentVariable(KibanaEnvironmentVariables.KIBANA_CONFIG_ENV_VAR, EnvironmentVariableTarget.Machine)
-			?? Environment.GetEnvironmentVariable(KibanaEnvironmentVariables.KIBANA_CONFIG_ENV_VAR, EnvironmentVariableTarget.User);
+			?? Environment.GetEnvironmentVariable(KibanaEnvironmentVariables.KIBANA_CONFIG_ENV_VAR, EnvironmentVariableTarget.User)
+			?? Environment.GetEnvironmentVariable(KibanaEnvironmentVariables.KIBANA_CONFIG_ENV_VAR, EnvironmentVariableTarget.Process);
 
 		public void SetKibanaHomeEnvironmentVariable(string kibanaHome) =>
 			Environment.SetEnvironmentVariable(KibanaEnvironmentVariables.KIBANA_HOME_ENV_VAR, kibanaHome, EnvironmentVariableTarget.Machine);

@@ -114,8 +114,8 @@ namespace Elastic.Installer.Domain.Kibana.Model.Locations
 				var fullPathB = Path.GetFullPath(pathB).TrimEnd('\\','/');
 				return 0 == string.Compare(fullPathA, fullPathB, true);
 			}
-			else
-				return false;
+
+			return false;
 		}
 
 		public void SetWritableLocationsToInstallDirectory(bool sameFolder)
@@ -181,7 +181,9 @@ namespace Elastic.Installer.Domain.Kibana.Model.Locations
 			set { this.RaiseAndSetIfChanged(ref logsDirectory, value); }
 		}
 
-		public string LogsFile => Path.Combine(LogsDirectory, "kibana.log");
+		public string LogsFile => LogsDirectory.Equals("stdout", StringComparison.OrdinalIgnoreCase) 
+			? LogsDirectory 
+			: Path.Combine(LogsDirectory, "kibana.log");
 
 		public override string ToString()
 		{

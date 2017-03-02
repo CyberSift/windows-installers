@@ -189,7 +189,7 @@
   <data name="ClosingView_SubTitleSuccess" xml:space="preserve">
     <value>What's Next?</value>
   </data>
-  <data name="ClosingView_RunningAtHeader" xml:space="preserve">
+  <data name="ClosingView_ElasticsearchRunningAtHeader" xml:space="preserve">
     <value>Open Elasticsearch in the browser</value>
   </data>
   <data name="ClosingView_FindYourClient" xml:space="preserve">
@@ -202,7 +202,7 @@
     <value>Read "The Definitive Guide" for free online!</value>
   </data>
   <data name="ClosingView_ReadTheDocsOnCloseCheckBox" xml:space="preserve">
-    <value>Open the Elasticsearch documentation after exiting</value>
+    <value>Open the Elastic Stack documentation after exiting</value>
   </data>
   <data name="ClosingView_TitleFailed" xml:space="preserve">
     <value>An error occured during {0}!</value>
@@ -692,5 +692,8 @@ Alternatively, you may choose to not install Elasticsearch as a service and run 
 This step allows you to configure the Windows user to run the service with, as well as when the service should be started.
 
 Alternatively, you may choose to not install Kibana as a service and run it manually as needed from the command line.</value>
+  </data>
+  <data name="ClosingView_KibanaRunningAtHeader" xml:space="preserve">
+    <value>Open Kibana in the browser</value>
   </data>
 </root>

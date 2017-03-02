@@ -13,17 +13,16 @@ namespace Elastic.Installer.Domain.Elasticsearch.Model.Tasks
 
 		protected override bool ExecuteTask()
 		{
-			var installDirectory = this.InstallationModel.LocationsModel.InstallDir;
-			var configDirectory = this.InstallationModel.LocationsModel.ConfigDirectory;
-			var provider = this.InstallationModel.PluginsModel.PluginStateProvider;
-
 			var plugins = this.InstallationModel.PluginsModel.Plugins.ToList();
 			if (plugins.Count == 0)
 			{
-				this.Session.Log("No plugins to selected to install");
+				this.Session.Log("No plugins selected to install");
 				return true;
 			}
 
+			var installDirectory = this.InstallationModel.LocationsModel.InstallDir;
+			var configDirectory = this.InstallationModel.LocationsModel.ConfigDirectory;
+			var provider = this.InstallationModel.PluginsModel.PluginStateProvider;
 			var ticksPerPlugin = new[] { 20, 1930, 50 };
 			var totalTicks = plugins.Count * ticksPerPlugin.Sum();
 
